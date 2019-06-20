@@ -9,13 +9,15 @@ class Application
       item = Item.all.find? { |item| item.name == item_name }
       
       if item == nil?
-        #status code = 404
+        resp.write "Error"
+        resp.status = 404
       else
         resp.write "#{item.price}"
       end
       
     else
-      #status code = 404
+      resp.write "Error"
+      resp.status = 404
     end
     
     resp.finish
