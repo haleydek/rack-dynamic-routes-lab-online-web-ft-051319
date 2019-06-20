@@ -8,6 +8,10 @@ class Application
     if req.path.match(/items/)
       item_name = req.path.split('/items/').last
       
+      if @@items.find { |item| item.name == item_name }
+        @@items.each do |item|
+          
+        resp.write 
       if item == nil
         resp.write "Route not found"
         resp.status = 400
