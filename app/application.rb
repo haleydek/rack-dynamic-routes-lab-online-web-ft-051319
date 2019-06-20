@@ -9,14 +9,10 @@ class Application
       item_name = req.path.split('/items/').last
       
       if @@items.find { |item| item.name == item_name }
-        @@items.each do |item|
-          
-        resp.write 
-      if item == nil
+        @@items.each { |item| resp.write "#{item.price}" if item.name == item_name }
+      else
         resp.write "Route not found"
         resp.status = 400
-      else
-        resp.write "#{item.price}"
       end
     else
       resp.write "Route not found"
